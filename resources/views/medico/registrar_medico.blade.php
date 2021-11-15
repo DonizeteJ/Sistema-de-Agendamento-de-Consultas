@@ -3,16 +3,16 @@
 @section('pg_title', 'Registrar médicos')
 
 @section('body')
-    <form action="{{ route('registrarMedicoAction') }}" method="post">
+    <form @if($edit ?? '') action="{{ route('editarMedicoAction', ['id' => $medico->id]) }}" @else action="{{ route('registrarMedicoAction') }}" @endif method="post">
         @csrf
         <div class="register_inputs">
             <div class="form-group">
                 <label for="name">Nome do médico: </label>
-                <input type="text" name="name" class="form-control" required>
+                <input type="text" name="name" class="form-control" @if($edit ?? '') value="{{ $medico->name}}"@endif required>
             </div>
             <div class="form-group">
                 <label for="name">Login: </label>
-                <input type="text" name="login" class="form-control" required>
+                <input type="text" name="login" class="form-control" @if($edit ?? '') value="{{ $medico->login}}" @endif required>
             </div>
             <div class="form-group">
                 <label for="name">Senha: </label>
@@ -56,12 +56,17 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Criar">
+                <input type="submit" class="btn btn-primary" @if($edit ?? '') value="Editar" @else value="Criar" @endif>
             </div>
             @if (session('msg'))
                 <div class="alert alert-success" role="alert">
                     {{session('msg')}}
                 </div>
+            @endif
+            @if (session('warning'))
+            <div class="alert alert-danger" role="alert">
+                {{session('warning')}}
+            </div>
             @endif
             @if ($errors->any())
                 <div class="alert alert-danger">

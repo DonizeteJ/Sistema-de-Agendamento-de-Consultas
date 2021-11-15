@@ -10,9 +10,9 @@
             @csrf
             <li><a class="dropdown-item" href="{{ route ('logout')}}"> Logoff </a></li>
             <li><a class="dropdown-item" href="{{ route ('agendar')}}"> Agendar consulta</a></li>
-            <li><a class="dropdown-item" href="{{ route ('registrarPaciente')}}">Registrar paciente</a></li>
+            <li><a class="dropdown-item" href="{{ route ('listaPaciente')}}">Pacientes</a></li>
             @if(Auth::user()->hasRole('admin'))
-                <li><a class="dropdown-item" href="{{ route ('registrarMedico')}}"> Registrar médico </a></li>
+                <li><a class="dropdown-item" href="{{ route ('listaMedico')}}">Médicos</a></li>
             @endif
         </ul>
     </div>

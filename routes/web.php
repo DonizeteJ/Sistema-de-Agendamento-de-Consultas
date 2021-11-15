@@ -23,8 +23,14 @@ Route::get('/home', 'AuthController@home')->name('home');
 
 Route::get('/home/agendamentos', 'AgendamentoController@index')->name('agendar');
 
-Route::get('/home/registrar_pacientes', 'PacienteController@index')->name('registrarPaciente');
-Route::post('/home/registrar_paciente/action', 'PacienteController@criarAction')->name('registrarPacienteAction');
+Route::get('/home/lista_pacientes', 'PacienteController@index')->name('listaPaciente');
+Route::post('/home/lista_pacientes/editar_pacientes/action/{id}', 'PacienteController@editar')->name('editarPacienteAction');
+Route::get('/home/lista_pacientes/registrar_pacientes/{id?}', 'PacienteController@criar')->name('registrarPaciente');
+Route::post('/home/lista_pacientes/registrar_paciente/action/{id?}', 'PacienteController@criarAction')->name('registrarPacienteAction');
+route::get('/home/lista_pacientes/apagar_paciente/{id}', 'PacienteController@apagar')->name('apagarPaciente');
 
-Route::get('/home/registrar_medico', 'MedicoController@index')->name('registrarMedico');
-Route::post('/home/registrar_medico/action', 'MedicoController@criarAction')->name('registrarMedicoAction');
+Route::get('/home/lista_medico', 'MedicoController@index')->name('listaMedico');
+Route::post('/home/lista_medico/editar_medico/action/{id}', 'MedicoController@editar')->name('editarMedicoAction');
+Route::get('/home/lista_medico/registrar_medico/{id?}', 'MedicoController@criar')->name('registrarMedico');
+Route::post('/home/lista_medico/registrar_medico/action/{id?}', 'MedicoController@criarAction')->name('registrarMedicoAction');
+route::get('/home/lista_medico/apagar_medico/{id}', 'MedicoController@apagar')->name('apagarMedico');
