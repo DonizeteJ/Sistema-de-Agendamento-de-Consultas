@@ -11,16 +11,16 @@
     <div class="container">
         <form action="{{route('loginAction')}}" method="post">
             @csrf
-            <div>
+            <div class="form-group">
                 <label for="login">Usuário: </label>
                 <input type="text" class="form-control login" name="login" placeholder="">
             </div>
-            <div>
+            <div class="form-group">
                 <label for="password" >Senha:</label>
                 <input type="password" class="form-control senha" name="password">
             </div>
-            <div>
-                <input type="submit" class="btn login" value="Logar">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Logar">
             </div>
             @if (session('warning'))
                 <div class="alert alert-danger" role="alert">
