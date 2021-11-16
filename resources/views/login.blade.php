@@ -6,9 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Sistema de agendamento de consultas - Login</title>
+    <style>
+        .container{
+            width: 30%;
+            margin-top: 15%;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <h2> Sistema de Agendamento de Consultas</h2>
         <form action="{{route('loginAction')}}" method="post">
             @csrf
             <div class="form-group">
