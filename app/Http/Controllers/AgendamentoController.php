@@ -7,6 +7,7 @@ use App\Models\Agendamento;
 use App\Models\Paciente;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
+use Carbon;
 
 class AgendamentoController extends Controller
 {
@@ -27,6 +28,13 @@ class AgendamentoController extends Controller
         $paciente = $request->paciente;
         $data = $request->data_consulta;
         $time = $request->horario_consulta;
+
+        $dia = Carbon\Carbon::now();
+        $dia_atual = $dia->toDateString();
+
+        if($dia_atual > $data){
+            return redirect()->back()->with('warning', 'Não é possível marcar uma consulta para um dia anterior ao atual');
+        }
 
         $consulta = Agendamento::first()->where('med_id', $medico)->where('data_consulta', $data)->where('horario_consulta', $time)->where('efetuada', 0)->get();
         if(count($consulta) > 0){
