@@ -11,16 +11,18 @@
         </thead>
         <tbody>
             @foreach($medicos as $medico)
-            <tr>
-                <td class="align-middle">{{$medico->name}}</td>
-                <td class="align-middle">{{$medico->crm}}</td>
-                <td class="text-center">
-                    <a href="{{route('registrarMedico',['id'=>$medico->id])}}" title="Editar"  type="button" class="btn btn-success"><i class="fas fa-user-edit"></i></a>
-                </td>
-                <td class="text-center">
-                    <a href="{{route('apagarMedico',['id'=>$medico->id])}}" title="Apagar" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                </td>
-            </tr>
+                @if($medico->id != 1)
+                    <tr>
+                        <td class="align-middle">{{$medico->name}}</td>
+                        <td class="align-middle">{{$medico->crm}}</td>
+                        <td class="text-center">
+                            <a href="{{route('registrarMedico',['id'=>$medico->id])}}" title="Editar"  type="button" class="btn btn-success"><i class="fas fa-user-edit"></i></a>
+                        </td>
+                        <td class="text-center">
+                            <a href="{{route('apagarMedico',['id'=>$medico->id])}}" title="Apagar" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>

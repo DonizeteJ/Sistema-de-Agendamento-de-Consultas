@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agendamento extends Model
 {
     protected $fillable = [
-        'med_id', 'pac_id', 'data_consulta', 'efetuada'
+        'med_id', 'pac_id', 'data_consulta', 'efetuada', 'horario_consulta'
     ];
 
     public function medico()

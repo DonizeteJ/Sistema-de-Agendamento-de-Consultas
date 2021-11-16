@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Models\Agendamento;
 
 class AuthController extends Controller
 {
@@ -31,7 +32,8 @@ class AuthController extends Controller
     }
 
     public function home(){
-        return view('home');
+        $consultas = Agendamento::all()->where('efetuada', 0)->where('med_id', Auth::user()->id);
+        return view('home', ['consultas' => $consultas]);
     }
 
     public function logout(){

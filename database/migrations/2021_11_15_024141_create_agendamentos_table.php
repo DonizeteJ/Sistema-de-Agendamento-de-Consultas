@@ -21,8 +21,9 @@ class CreateAgendamentosTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('pac_id')->references('id')->on('pacientes')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->dateTime('data_consulta');
-            $table->boolean('efetuada');
+            $table->date('data_consulta');
+            $table->time('horario_consulta');
+            $table->boolean('efetuada')->default(0);
             $table->timestamps();
         });
     }

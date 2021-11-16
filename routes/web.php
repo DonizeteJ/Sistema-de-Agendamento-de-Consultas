@@ -21,7 +21,10 @@ Route::post('/login', 'AuthController@login')->name('loginAction');
 
 Route::get('/home', 'AuthController@home')->name('home');
 
-Route::get('/home/agendamentos', 'AgendamentoController@index')->name('agendar');
+Route::get('/home/agendamentos/{id?}', 'AgendamentoController@index')->name('agendar');
+Route::post('/home/agendamentos/action', 'AgendamentoController@criar')->name('agendarAction');
+Route::get('/home/consulta_efetuada', 'AgendamentoController@efetuar')->name('consultaEfetuada');
+Route::post('/home/agendamentos/editar/{id?}', 'AgendamentoController@editar')->name('editarAgendamento');
 
 Route::get('/home/lista_pacientes', 'PacienteController@index')->name('listaPaciente');
 Route::post('/home/lista_pacientes/editar_pacientes/action/{id}', 'PacienteController@editar')->name('editarPacienteAction');

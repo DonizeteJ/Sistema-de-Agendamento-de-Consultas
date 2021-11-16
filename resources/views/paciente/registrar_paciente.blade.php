@@ -15,7 +15,7 @@
             <input type="number" name="cpf" class="form-control" @if($edit ?? '') value="{{$paciente->cpf}}"@else value="00000000000" @endif min="0" max="99999999999" required>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" @if($edit ?? '') value="Registrar Paciente" @else value="Editar Paciente"@endif>
+            <input type="submit" class="btn btn-primary" @if($edit ?? '') value="Editar Paciente" @else value="Registrar Paciente"@endif>
         </div>
         @if (session('msg'))
             <div class="alert alert-success" role="alert">
