@@ -26,5 +26,10 @@
         <div class="form-group">
             <input type="submit" class="btn btn-primary" @if($edit ?? '') value="Editar" @else value="Agendar" @endif>
         </div>
+        @if (session('warning'))
+            <div class="alert alert-danger" role="alert">
+                {{session('warning')}}
+            </div>
+        @endif
     </form>
 @endsection

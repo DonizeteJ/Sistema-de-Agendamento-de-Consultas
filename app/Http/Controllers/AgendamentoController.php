@@ -28,6 +28,10 @@ class AgendamentoController extends Controller
         $data = $request->data_consulta;
         $time = $request->horario_consulta;
 
+        $consulta = Agendamento::first()->where('med_id', $medico)->where('data_consulta', $data)->where('horario_consulta', $time)->where('efetuada', 0)->get();
+        if(count($consulta) > 0){
+            return redirect()->back()->with('warning', 'Já existe uma consulta marcada neste horário');
+        }
         $agendamento = Agendamento::create([
             'med_id' => $medico,
             'pac_id' => $paciente,
