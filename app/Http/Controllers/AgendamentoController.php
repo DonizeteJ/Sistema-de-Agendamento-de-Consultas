@@ -36,6 +36,7 @@ class AgendamentoController extends Controller
             return redirect()->back()->with('warning', 'Não é possível marcar uma consulta para um dia anterior ao atual');
         }
 
+        
         $consulta = Agendamento::first()->where('med_id', $medico)->where('data_consulta', $data)->where('horario_consulta', $time)->where('efetuada', 0)->get();
         if(count($consulta) > 0){
             return redirect()->back()->with('warning', 'Já existe uma consulta marcada neste horário');
